@@ -52,12 +52,33 @@ USA = {"Gender": {"Male":  0.97,
                },
        "Cis / Trans": {"Trans": 0.58,
                        "Cis": 100-0.58},
-       "Sexual Orientation": {"Female": {"Lesbian": 1.3,
-                                       "Bisexual": 5.5,
-                                       "Hetero": 92.3},
-                              "Male": {"Gay": 1.9,
-                                       "Bisexual": 2.0,
-                                       "Hetero": 95.1}}};
+       "Sexual Orientation": {
+           "Female": {"Lesbian": 1.3,          
+                      "Bisexual": 5.5,
+                      "Hetero": 92.3},
+           "Male": {"Gay": 1.9,
+                    "Bisexual": 2.0,
+                    "Hetero": 95.1}},
+       "States": {
+           "California": { 
+               "Race": { "White": 37.7,
+                         "Black": 6.5,
+                         "Native American": 1.7,
+                         "Hispanic": 38.9,
+                         "Asian": 14.8,
+                         "Pacific Islander": 0.5,
+                         "Mixed": 3.8}      
+            },
+           "Mississippi": { 
+               "Race": { "White": 56.9,
+                         "Black": 37.7,
+                         "Native American": 0.1,
+                         "Hispanic": 3.1,
+                         "Asian": 1.1,
+                         "Pacific Islander": 0.1,
+                         "Mixed": 1.2} 
+           }
+       }};
     
 var allData = {"USA" : USA}
 
@@ -68,24 +89,40 @@ for(var i = 1; i<=10; i++){
     }));
 }
     
-for(var i = 0; i<=qualities.length; i++){
-    $('#profileTableHeaders').append($('<th />', {
-        text: qualities[i]
+for(var key in allData){
+    $('#countrySelect').append($('<option>', {
+        value: key,
+        text: key
     }));
 }
-
+    
+for(var key in allData[$('#countrySelect').val()]["States"]){
+    $('#stateSelect').append($('<option>', {
+        value: key,
+        text: key
+    }));
+}
+function fillHeaders(){  
+    for(var i = 0; i<qualities.length; i++){
+        $('#profileTableHeaders').append($('<th />', {
+            text: qualities[i]
+        }));
+    }
+}
+fillHeaders();
 
 
 function generateProfile(country, state){
     profile={};
-    
     for(var i=0; i<qualities.length; i++){
         dataSource=allData;
         if(dataSource.hasOwnProperty(country) && dataSource[country].hasOwnProperty(qualities[i])){
+            //alert("Using country-level data for:" + qualities[i]);
             dataSource=dataSource[country];
         }
-        if(dataSource.hasOwnProperty(state) && dataSource[state].hasOwnProperty(qualities[i])){
-            dataSource=dataSource[state];
+        console.log(dataSource["States"][state]);
+        if(dataSource["States"].hasOwnProperty(state) && dataSource["States"][state].hasOwnProperty(qualities[i])){
+            dataSource=dataSource["States"][state];
         }
         if(qualities[i]!=="Sexual Orientation"){
             profile[qualities[i]] = selectRandomItem(dataSource[qualities[i]])
@@ -101,15 +138,19 @@ function generateProfile(country, state){
 
 $('#generateButton').click(function() {
     //alert(allData["USA"]["Gender"]["Male"]);
+    $('#profileTable tr:not(:first)').remove();
     for(var i = 0; i < $("#numberToGenerate").val(); i++){
-        var profile = generateProfile("USA", "");
+        var profile = generateProfile($('#countrySelect').val(), $('#stateSelect').val());
         
-        a=$("#profileTable").find('tbody')
-            .append($('<tr>'));
+        a=$("#profileTable").find('tbody');
+        b=$('<tr/>');
+        b.append($('<td class=\"entry\"/>')
+                    .text(i+1));
         for(var j = 0; j < qualities.length; j++){
-            a.append($('<td>')
+            b.append($('<td class=\"entry\"/>')
                     .text(profile[qualities[j]]));
         }
+        a.append(b);
     }
     
 })

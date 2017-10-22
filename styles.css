@@ -1,14 +1,70 @@
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 4px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
-#profileTable {
-    border="1";
+table, th, td {
+    border: 1px solid black;
+    font-size: 16pt;
+    border-collapse: collapse;
+    text-align: center;
+    padding: auto;
 }
+
+#profileTable tr:nth-child(even){background-color: #f2f2f2;}
+#profileTable tr:hover {background-color: #ddd;}
+
+select {
+    font: inherit;
+}
+
+.areaSelect {
+    font-size: 16px
+}
+
+.entry{
+    width: 100px;
+    height: 50px;
+}
+
+#profileTableHeaders th{
+    width: 100px;
+    height: 50px;
+}
+
+.outer-div
+{
+     padding: 0px;
+     display: grid;
+}
+.inner-div
+{
+     margin: auto;
+     margin-bottom: 8px;
+     display: inline-block;
+     padding-top=30px;
+     padding-bottom=30px;
+}
+
+.logo-div
+{
+     margin: auto;
+     display: inline-block;
+     padding-top=30px;
+     padding-bottom=30px;
+}
+
+
+.logo-div p {
+    display: inline-block;
+    font-weight: bold;
+}
+
+

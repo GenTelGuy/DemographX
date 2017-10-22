@@ -8,19 +8,24 @@
 </head>
 
 <body>
-    <select id="countrySelect" class="areaSelect">
-        <option>USA</option>
+    <div class='outer-div'>
+    <div class='logo-div'><p style="font-size: 20px">Demograph</p><p style="font-size: 30px">X</p></div>
+    <div class='logo-div'><p style="font-size: 16px">Inclusive demographic profiles driven by real-world statistics</p></div>
+    <div class='inner-div'><select id="countrySelect" class="areaSelect">
     </select>
     <select id="stateSelect" class="areaSelect">
-        <option>California</option>
+        <option>---</option>
     </select>
     <select id="numberToGenerate" class="numberSelect">
     </select>
-    <button id="generateButton" class="button"></button>
-    
+    <button id="generateButton" class="button">Generate &#187;</button>
+    </div>
+    <div class='inner-div' style="margin-bottom: 0px">
     <table id="profileTable">
-    <tr id="profileTableHeaders"></tr>
+    <tr id="profileTableHeaders"><th>Profile #</th></tr>
     </table>
+    </div>
+    </div>
 </body>
 
 
