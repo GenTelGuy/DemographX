@@ -60,6 +60,50 @@ USA = {"Gender": {"Male":  0.97,
                     "Bisexual": 2.0,
                     "Hetero": 95.1}},
        "States": {
+           "Alabama": {
+               "Race": {
+                   "White": 65.8,
+                   "Black": 26.8,
+                   "Native American": 0.7,
+                   "Hispanic": 4.2,
+                   "Asian": 1.4,
+                   "Pacific Islander": 0.1,
+                   "Mixed": 1.6
+               } 
+           },
+           "Alaska": {
+               "Race": {
+                   "White": 61.2,
+                   "Black": 3.8,
+                   "Native American": 15.2,
+                   "Hispanic": 7.0,
+                   "Asian": 6.3,
+                   "Pacific Islander": 1.3,
+                   "Mixed": 7.3
+               } 
+           },
+           "Arizona": {
+               "Race": {
+                   "White": 55.5,
+                   "Black": 4.9,
+                   "Native American": 5.4, 
+                   "Hispanic": 30.9,
+                   "Asian": 3.4,
+                   "Pacific Islander": 0.3,
+                   "Mixed": 2.8
+               } 
+           },
+           "Arkansas": {
+               "Race": {
+                   "White": 72.9,
+                   "Black": 15.7,
+                   "Native American": 0.3,
+                   "Hispanic": 7.3,
+                   "Asian": 1.6,
+                   "Pacific Islander": 0.3,
+                   "Mixed": 2.0
+               } 
+           },
            "California": { 
                "Race": { "White": 37.7,
                          "Black": 6.5,
